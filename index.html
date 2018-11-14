@@ -1,0 +1,57 @@
+<html>
+
+<head>
+    <title>Hello World Index</title>
+    <script src="./vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+    <script src="index.js" async></script>
+</head>
+
+<body>
+    <div id="app">
+        <p :class="{inactive:isActive}">{{ message }}</p>
+        <button v-on:click="reverseMessage">Reverse message</button>
+        <input v-model="message" type="text" />
+
+        <span v-bind:title="message2">
+            Hover your mouse over me for a few seconds to see my dynamically bound
+            title!
+        </span>
+        <span v-if="seen">Now you see me</span>
+        <ul>
+            <li v-for="item in evenNumbers" :key="item">{{ item }}</li>
+        </ul>
+
+        <ul>
+            <template v-for="item in todos">
+                <li>{{ item.text }}</li>
+                <li class="divider" role="presentation"></li>
+            </template>
+        </ul>
+        <template v-if="ok">
+            <div>hahaha</div>
+        </template>
+
+        <template v-if="loginType === 'username'">
+            <label>Username</label> <input placeholder="Enter your username" key="3" />
+        </template>
+        <template v-else>
+            <label>Email</label> <input placeholder="Enter your email address" key="1" />
+        </template>
+        <input type="button" value="toggle" @click="toggle"></button>
+        <ul>
+            <li v-for="item in todos" v-if="item.id%2==1" :key="item.id" :index="item.id">{{ item.id }}</li>
+        </ul>
+        <todo-item v-for="(item,index) in todos" :item="item" :index="index" :key="item.id"></todo-item>
+
+
+    </div>
+
+    <div id="watch-example">
+        <p>Ask a yes/no question: <input v-model="question" /></p>
+        <p>{{ answer }}</p>
+    </div>
+</body>
+
+</html>
