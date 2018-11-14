@@ -1,5 +1,5 @@
 /* global Vue */
-/* global axios*/
+/* global axios*/ //
 
 Vue.component('todo-item', {
   template: '<li>{{item.text}}</li>',
